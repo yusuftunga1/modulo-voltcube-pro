@@ -5,12 +5,25 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MODULO VoltCube Pro — 100W Akıllı GaN Şarj İstasyonu</title>
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="description" content="MODULO VoltCube Pro: 100W GaN, 3× USB-C + 1× USB-A, anlık watt göstergesi ve ışıklı stand. Masaüstünüzdeki kablo karmaşasına son.">
+<link rel="canonical" href="https://yusuftunga1.github.io/modulo-voltcube-pro/">
+<meta name="theme-color" content="#08090b">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="MODULO">
+<meta property="og:title" content="MODULO VoltCube Pro — 100W Akıllı GaN Şarj İstasyonu">
+<meta property="og:description" content="3 USB-C + 1 USB-A, 100W GaN, anlık watt göstergesi ve ışıklı stand. 1.950 ₺.">
+<meta property="og:url" content="https://yusuftunga1.github.io/modulo-voltcube-pro/">
+<meta property="og:image" content="https://yusuftunga1.github.io/modulo-voltcube-pro/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"MODULO VoltCube Pro","description":"100W akıllı GaN şarj istasyonu: 3 USB-C ve 1 USB-A port, anlık watt göstergesi, mikro ızgaralı soğutma ve ışıklı stand.","brand":{"@type":"Brand","name":"MODULO"},"image":"https://yusuftunga1.github.io/modulo-voltcube-pro/assets/view-front.jpg","url":"https://yusuftunga1.github.io/modulo-voltcube-pro/","offers":{"@type":"Offer","price":"1950","priceCurrency":"TRY","url":"https://yusuftunga1.github.io/modulo-voltcube-pro/"}}</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='7' y='3' width='18' height='26' rx='7' fill='%23222428'/%3E%3Crect x='11' y='8' width='10' height='4' rx='2' fill='%234aa8ff'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/barlow-condensed-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="style.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -299,11 +312,12 @@
     <div class="row"><span>Kargo</span><b>Sipariş sırasında</b></div>
     <div class="row total"><span>Toplam</span><b id="cTotal">0 ₺</b></div>
     <a class="btn btn-primary btn-wide" id="checkout" href="#">Siparişi tamamla <span class="arr">→</span></a>
+    <button class="btn btn-ghost btn-wide" id="copyOrder" type="button">Sipariş özetini kopyala</button>
   </div>
 </aside>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="vendor/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ=="></script>
 <script src="app.js"></script>
 </body>
 </html>

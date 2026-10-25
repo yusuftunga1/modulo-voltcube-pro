@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yusuftunga1.github.io/modulo-voltcube-pro/sitemap.xml
