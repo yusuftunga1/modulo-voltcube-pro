@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MODULO VoltCube Pro — 100W Akıllı GaN Şarj İstasyonu</title>
+<meta name="description" content="MODULO VoltCube Pro: 100W GaN, 3× USB-C + 1× USB-A, anlık watt göstergesi ve ışıklı stand. Masaüstünüzdeki kablo karmaşasına son.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='7' y='3' width='18' height='26' rx='7' fill='%23222428'/%3E%3Crect x='11' y='8' width='10' height='4' rx='2' fill='%234aa8ff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <span class="loader-word">MODULO</span>
+  <span class="loader-count" id="loaderCount">0</span>
+</div>
+
+<div class="ambient" id="ambient" aria-hidden="true"></div>
+<canvas id="stage" aria-hidden="true"></canvas>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="MODULO ana sayfa">MODULO<i></i></a>
+  <nav class="nav-links" aria-label="Ana menü">
+    <a href="#ozellikler">Özellikler</a>
+    <a href="#urun">VoltCube Pro</a>
+    <a href="#teknik">Teknik</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#fark">Pro farkı</a>
+  </nav>
+  <div class="nav-r">
+    <button class="cart-btn" id="cartOpen" aria-label="Sepeti aç" data-mag>
+      <span>Sepet</span><b id="cartCount">0</b>
+    </button>
+    <button class="menu-btn" id="menuBtn" aria-label="Menüyü aç" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+  </div>
+</header>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<nav class="menu" id="menu" aria-label="Mobil menü" aria-hidden="true">
+  <a href="#ozellikler">Özellikler</a>
+  <a href="#urun">VoltCube Pro</a>
+  <a href="#teknik">Teknik</a>
+  <a href="#galeri">Galeri</a>
+  <a href="#fark">Pro farkı</a>
+  <button class="btn btn-accent" data-quick="pro">Sepete ekle · 1.950 ₺</button>
+</nav>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" id="hero" data-glow="#bccadb" data-c1="#1b1e23" data-c2="#08090b" data-gx="50%" data-gy="46%">
+    <h1 class="hero-title" aria-label="MODULO VoltCube Pro">
+      <span class="w w-l" aria-hidden="true" data-split="plain">Volt</span>
+      <span class="w w-r" aria-hidden="true" data-split="plain">Cube</span>
+      <span class="pro-tag" aria-hidden="true">PRO</span>
+    </h1>
+    <div class="anchor hero-anchor" data-anchor data-ry="0"></div>
+    <p class="hud hud-l c" aria-hidden="true">MODULO® — 100W GaN</p>
+    <p class="hud hud-r c" aria-hidden="true">3× USB-C · 1× USB-A<br>AKILLI GÜÇ DAĞILIMI</p>
+    <div class="hero-meta c">
+      <div class="hero-copy" data-r>
+        <p>Masaüstünüzdeki kablo karmaşasına son. 100W GaN gücüyle dört cihazı aynı anda, anlık watt göstergesiyle şarj eden akıllı şarj üssü.</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="#urun" data-mag>Pro'yu keşfet <span class="arr">→</span></a>
+          <a class="btn btn-ghost" href="#teknik" data-mag>Teknik özellikler</a>
+        </div>
+      </div>
+      <div class="hero-buy glass" data-r style="--d:150ms">
+        <span class="hb-name">VoltCube Pro · Mat antrasit</span>
+        <span class="hb-price">1.950 ₺</span>
+        <button class="btn btn-accent" data-quick="pro" data-mag>Sepete ekle</button>
+      </div>
+    </div>
+    <a class="scroll-cue c" href="#ozellikler" aria-label="Aşağı kaydır"><span>KAYDIR</span><i></i></a>
+  </section>
+
+  <!-- MARQUEE -->
+  <section class="marq-wrap" aria-label="Öne çıkan özellikler">
+    <div class="marq marq-outline c" data-dir="-1">
+      <div class="marq-track"><span>100W GaN</span><i class="dot"></i><span>3× USB-C</span><i class="dot"></i><span>1× USB-A</span><i class="dot"></i><span>Anlık watt göstergesi</span><i class="dot"></i><span>Işıklı stand</span><i class="dot"></i></div>
+    </div>
+    <div class="marq marq-solid c" data-dir="1">
+      <div class="marq-track"><span>Tek üs</span><i class="dot"></i><span>Dört cihaz</span><i class="dot"></i><span>Sıfır karmaşa</span><i class="dot"></i><span>Tek üs</span><i class="dot"></i><span>Dört cihaz</span><i class="dot"></i><span>Sıfır karmaşa</span><i class="dot"></i></div>
+    </div>
+  </section>
+
+  <!-- FEEL -->
+  <section class="feel" id="ozellikler" data-glow="#7f93a6" data-c1="#14161a" data-c2="#08090b" data-gx="78%" data-gy="45%">
+    <div class="feel-grid c">
+      <div class="feel-text">
+        <h2 class="h2" data-split>Dört cihaz. Tek üs.</h2>
+        <p class="lead" data-r>Yuvarlatılmış dikey kapsül-küp formu, mat antrasit dokusu ve fırçalanmış metal yan panelleriyle VoltCube Pro, masanızda bir tasarım objesi gibi durur. Dizüstü, telefon, tablet ve kulaklık: hepsi aynı anda, maksimum hızda.</p>
+        <ul class="stats">
+          <li data-r><b class="num"><span data-count="100">100</span><small class="unit">W</small></b><span class="lbl">GaN gücü, akıllı güç dağılımı</span></li>
+          <li data-r style="--d:90ms"><b class="num"><span data-count="4">4</span></b><span class="lbl">port: 3× USB-C ve 1× USB-A</span></li>
+          <li data-r style="--d:180ms"><b class="num">GaN</b><span class="lbl">kompakt gövde, enerji kaybı yok</span></li>
+        </ul>
+      </div>
+      <div class="anchor feel-anchor" data-anchor data-ry=".55"></div>
+    </div>
+  </section>
+
+  <!-- PRODUCT / FEATURES -->
+  <section class="coll" id="urun" data-glow="#8aa0b4" data-c1="#14161a" data-c2="#08090b" data-gx="72%" data-gy="52%">
+    <div class="coll-head c">
+      <h2 class="h2" data-split>VoltCube Pro</h2>
+      <p class="lead" data-r>Bir şerit seçin, ürünün o özelliğine yaklaşın.</p>
+    </div>
+    <div class="coll-grid c">
+      <div class="strips" id="strips" role="group" aria-label="Özellik seçimi">
+        <article class="strip on" data-f="gan">
+          <button class="strip-btn" aria-pressed="true" aria-label="100W GaN akıllı şarj teknolojisi"></button>
+          <span class="strip-v" aria-hidden="true">100W GaN</span>
+          <span class="strip-g" aria-hidden="true"></span>
+          <div class="strip-body">
+            <h3>100W GaN</h3>
+            <p class="type">Akıllı şarj teknolojisi</p>
+            <p class="desc">Yeni nesil GaN çipleri sayesinde geleneksel adaptörlere göre çok daha kompakt bir gövdede, enerji kaybı olmadan ultra yüksek hızda şarj.</p>
+            <dl>
+              <div><dt>Maksimum güç</dt><dd>100W</dd></div>
+              <div><dt>Çip</dt><dd>GaN (Galyum Nitrür)</dd></div>
+              <div><dt>Dağılım</dt><dd>Akıllı güç dağılımı</dd></div>
+              <div><dt>Şarj eder</dt><dd>Dizüstü, telefon, tablet, kulaklık</dd></div>
+            </dl>
+          </div>
+        </article>
+        <article class="strip" data-f="display">
+          <button class="strip-btn" aria-pressed="false" aria-label="Anlık LED güç göstergesi"></button>
+          <span class="strip-v" aria-hidden="true">Güç göstergesi</span>
+          <span class="strip-g" aria-hidden="true"></span>
+          <div class="strip-body">
+            <h3>Güç göstergesi</h3>
+            <p class="type">Anlık LED ekran</p>
+            <p class="desc">Ön yüzeydeki akıllı dijital ekran ve durum LED'leri, bağlı cihazlara aktarılan anlık gücü (Watt) ve şarj durumunu gerçek zamanlı gösterir.</p>
+            <dl>
+              <div><dt>Ekran</dt><dd>Kavisli dijital</dd></div>
+              <div><dt>Gösterge</dt><dd>Anlık Watt değeri</dd></div>
+              <div><dt>Durum</dt><dd>Aktif port LED'i</dd></div>
+              <div><dt>Takip</dt><dd>Gerçek zamanlı</dd></div>
+            </dl>
+          </div>
+        </article>
+        <article class="strip" data-f="ports">
+          <button class="strip-btn" aria-pressed="false" aria-label="4'ü 1 arada multi-port çıkışı"></button>
+          <span class="strip-v" aria-hidden="true">4'ü 1 arada</span>
+          <span class="strip-g" aria-hidden="true"></span>
+          <div class="strip-body">
+            <h3>4'ü 1 arada</h3>
+            <p class="type">Multi-port çıkış</p>
+            <p class="desc">3 yüksek hızlı USB-C ve 1 USB-A ile aynı anda 4 cihazı besler. Akıllı güç dağılımı her cihaza ihtiyacı olan akımı otomatik yönlendirir.</p>
+            <dl>
+              <div><dt>USB-C</dt><dd>3 adet</dd></div>
+              <div><dt>USB-A</dt><dd>1 adet</dd></div>
+              <div><dt>Toplam</dt><dd>4 port</dd></div>
+              <div><dt>Akım</dt><dd>Otomatik yönlendirme</dd></div>
+            </dl>
+          </div>
+        </article>
+        <article class="strip" data-f="cool">
+          <button class="strip-btn" aria-pressed="false" aria-label="Premium ısı kontrolü ve ışıklı stand"></button>
+          <span class="strip-v" aria-hidden="true">Isı &amp; stand</span>
+          <span class="strip-g" aria-hidden="true"></span>
+          <div class="strip-body">
+            <h3>Isı &amp; stand</h3>
+            <p class="type">Premium ısı kontrolü</p>
+            <p class="desc">Mikro ızgaralı havalandırma kanalları ve fırçalanmış metal paneller tam yükte bile serin tutar. Işıklı kaymaz taban masanıza modern bir dokunuş katar.</p>
+            <dl>
+              <div><dt>Havalandırma</dt><dd>Mikro ızgara</dd></div>
+              <div><dt>Yan panel</dt><dd>Fırçalanmış metal</dd></div>
+              <div><dt>Taban</dt><dd>LED aydınlatmalı</dd></div>
+              <div><dt>Yüzey</dt><dd>Kaymaz</dd></div>
+            </dl>
+          </div>
+        </article>
+      </div>
+
+      <div class="buy">
+        <div class="anchor coll-anchor" data-anchor data-feature></div>
+        <div class="buy-card glass">
+          <div class="buy-top">
+            <div><span class="buy-name">VoltCube Pro</span><span class="buy-type">100W Akıllı GaN Şarj İstasyonu</span></div>
+            <span class="buy-price">1.950 ₺</span>
+          </div>
+          <div class="swatches" role="group" aria-label="Renk">
+            <button class="sw-btn on" aria-pressed="true" style="--c:#2a2c31"><i></i>Mat antrasit</button>
+            <div class="qty qty-buy"><button id="qMinus" aria-label="Azalt">−</button><span id="qVal">1</span><button id="qPlus" aria-label="Artır">+</button></div>
+          </div>
+          <div class="btns">
+            <button class="btn btn-primary" id="addBtn" data-mag>Sepete ekle <span class="arr">+</span></button>
+            <a class="btn btn-ghost" href="#fark" data-mag>Standart ile fark</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH TABLE -->
+  <section class="tech" id="teknik" data-glow="#6f8396" data-c1="#121418" data-c2="#08090b" data-gx="25%" data-gy="55%">
+    <div class="tech-head c">
+      <h2 class="h2" data-split>Teknik özellikler</h2>
+    </div>
+    <div class="tech-grid c">
+      <div class="anchor tech-anchor" data-anchor data-ry="-.5"></div>
+      <div class="spec glass" data-r>
+        <table>
+          <caption class="sr">MODULO VoltCube Pro teknik özet</caption>
+          <tbody>
+            <tr><th scope="row">Model</th><td>MODULO VoltCube Pro</td></tr>
+            <tr><th scope="row">Maksimum güç</th><td>100W (akıllı güç dağılımı)</td></tr>
+            <tr><th scope="row">Portlar</th><td>3× USB-C, 1× USB-A (toplam 4 port)</td></tr>
+            <tr><th scope="row">Ekran</th><td>Kavisli dijital watt göstergesi + aktif port LED'i</td></tr>
+            <tr><th scope="row">Gövde tasarımı</th><td>Yuvarlatılmış dikey küp · mat antrasit &amp; fırçalanmış metal</td></tr>
+            <tr><th scope="row">Ekstra</th><td>Mikro havalandırma ızgarası, LED aydınlatmalı alt taban</td></tr>
+            <tr><th scope="row">Satış fiyatı</th><td><b>1.950 ₺</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY (real product photos, horizontal scroll) -->
+  <section class="gal" id="galeri" data-glow="#8aa0b4" data-c1="#14161a" data-c2="#08090b" data-gx="50%" data-gy="55%">
+    <div class="anchor hide-anchor gal-hide" data-anchor data-hide></div>
+    <div class="gal-pin">
+      <div class="gal-head c">
+        <h2 class="h2" data-split>Her açıdan.</h2>
+        <p class="lead" data-r>Ön, yan ve arka yüz: gerçek ürün fotoğrafları.</p>
+      </div>
+      <div class="gal-track c" id="galTrack">
+        <figure class="shot"><img src="assets/view-front.jpg" alt="MODULO VoltCube Pro ön yüz: dijital watt ekranı, iki USB-C ve bir USB-A portu" width="680" height="940" loading="lazy"><figcaption><b>Ön yüz</b><span>Dijital watt ekranı ve portlar</span></figcaption></figure>
+        <figure class="shot"><img src="assets/view-angle.jpg" alt="VoltCube Pro üç çeyrek görünüm, fırçalanmış metal yan panel" width="680" height="940" loading="lazy"><figcaption><b>Üç çeyrek</b><span>Ön yüz ve fırçalanmış metal panel</span></figcaption></figure>
+        <figure class="shot"><img src="assets/view-side.jpg" alt="VoltCube Pro yan yüz: mikro ızgara ve fırçalanmış metal panel" width="680" height="940" loading="lazy"><figcaption><b>Yan yüz</b><span>Mikro ızgara ve metal panel</span></figcaption></figure>
+        <figure class="shot"><img src="assets/view-plain.jpg" alt="VoltCube Pro sade yan yüz, mat antrasit gövde ve ışıklı taban" width="680" height="940" loading="lazy"><figcaption><b>Mat gövde</b><span>Mat antrasit, yuvarlatılmış form</span></figcaption></figure>
+        <figure class="shot"><img src="assets/view-back.jpg" alt="VoltCube Pro arka yüz: havalandırma ızgarası ve güç girişi" width="680" height="940" loading="lazy"><figcaption><b>Arka yüz</b><span>Havalandırma ve güç girişi</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRO DIFFERENCE (real product photo + glass) -->
+  <section class="glass-sec" id="fark" data-glow="#9aa4ae" data-c1="#101215" data-c2="#08090b" data-gx="60%" data-gy="50%">
+    <div class="photo" aria-hidden="true"></div>
+    <div class="anchor hide-anchor" data-anchor data-hide></div>
+    <div class="gpanel c" data-r>
+      <p class="gp-tabs"><span>VoltCube 1.450 ₺</span><span class="on">VoltCube Pro 1.950 ₺</span></p>
+      <h2>Pro farkı: +500 ₺</h2>
+      <ul>
+        <li><b>Dijital watt ekranı</b><span>Anlık güç ve şarj durumu, ön yüzeyde.</span></li>
+        <li><b>Gelişmiş soğutma</b><span>Mikro ızgaralı kanallar ve fırçalanmış metal paneller.</span></li>
+        <li><b>Işıklı stand</b><span>LED aydınlatmalı kaymaz taban.</span></li>
+      </ul>
+      <button class="btn btn-primary" data-quick="pro" data-mag>Pro'yu sepete ekle <span class="arr">+</span></button>
+    </div>
+  </section>
+
+  <!-- CTA / FOOTER -->
+  <section class="cta" id="satin-al" data-glow="#a9b8c8" data-c1="#17191d" data-c2="#08090b" data-gx="50%" data-gy="95%">
+    <div class="cta-grid c">
+      <div>
+        <h2 class="h2 h2-xl" data-split>Kabloları unut.</h2>
+        <p class="lead" data-r>VoltCube Pro, 1.950 ₺. Tek üs, dört cihaz, anlık güç göstergesi.</p>
+        <div class="btns" data-r>
+          <button class="btn btn-primary" data-quick="pro" data-mag>Sepete ekle <span class="arr">+</span></button>
+          <button class="btn btn-ghost" data-open-cart data-mag>Sepete git</button>
+        </div>
+      </div>
+      <div class="anchor cta-anchor" data-anchor data-ry=".35"></div>
+    </div>
+    <footer class="foot c">
+      <div class="foot-cols">
+        <div><h4>Ürün</h4><a href="#urun">VoltCube Pro</a><a href="#teknik">Teknik özellikler</a><a href="#galeri">Galeri</a><a href="#fark">Pro farkı</a></div>
+        <div><h4>İletişim</h4><a href="mailto:merhaba@modulo.example">merhaba@modulo.example</a><span>Türkiye</span></div>
+      </div>
+      <p class="copy">© 2026 MODULO. Tüm hakları saklıdır.</p>
+    </footer>
+    <div class="giant c" aria-hidden="true"><span class="fit">MODULO</span></div>
+  </section>
+</main>
+
+<div class="scrim" id="scrim"></div>
+<aside class="cart" id="cart" aria-hidden="true" aria-label="Sepet">
+  <div class="cart-head">
+    <h3>Sepetiniz</h3>
+    <button id="cartClose" class="x" aria-label="Sepeti kapat">×</button>
+  </div>
+  <ul class="cart-list" id="cartList"></ul>
+  <div class="cart-empty" id="cartEmpty">
+    <p>Sepetiniz boş.</p>
+    <a class="btn btn-ghost" href="#urun" data-close-cart>Ürüne git</a>
+  </div>
+  <div class="cart-foot" id="cartFoot">
+    <div class="row"><span>Ara toplam</span><b id="cSub">0 ₺</b></div>
+    <div class="row"><span>Kargo</span><b>Sipariş sırasında</b></div>
+    <div class="row total"><span>Toplam</span><b id="cTotal">0 ₺</b></div>
+    <a class="btn btn-primary btn-wide" id="checkout" href="#">Siparişi tamamla <span class="arr">→</span></a>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
