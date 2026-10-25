@@ -356,3 +356,7 @@ body.cart-open .scrim{opacity:1;pointer-events:auto}
   .feel-anchor,.cta-anchor{order:-1}
   .feel-anchor{width:min(62vw,40vh)}
 }
+
+/* erişilebilirlik: içeriğe atla */
+.skip{position:fixed;left:12px;top:-60px;z-index:400;background:#fff;color:#08090b;padding:10px 16px;font-weight:600;border-radius:999px;transition:top .2s}
+.skip:focus{top:12px}

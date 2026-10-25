@@ -1,4 +1,27 @@
+# işletim sistemi
 .DS_Store
-.claude/
+Thumbs.db
+desktop.ini
+
+# düzenleyici
+.vscode/
+.idea/
+*.swp
+
+# bağımlılıklar ve günlükler
 node_modules/
+*.log
+
+# gizli bilgiler asla depoya girmemeli
 .env
+.env.*
+*.pem
+*.key
+
+# yerel araç ayarları
+.claude/
+
+# ham ve inceleme dosyaları buraya asla girmemeli
+review/
+raw/
+*.zip
