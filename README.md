@@ -2,13 +2,14 @@
 
 # ⚡ MODULO VoltCube Pro: 3B Ürün Satış Sitesi
 
+[![Live Website](https://img.shields.io/badge/Website-yusuftunga1.github.io/modulo--voltcube--pro-5CC8E8.svg?style=for-the-badge&logo=google-chrome&logoColor=white)](https://yusuftunga1.github.io/modulo-voltcube-pro/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-00ff88.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)](https://en.wikipedia.org/wiki/HTML5)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6.svg?style=for-the-badge&logo=css3&logoColor=white)](https://en.wikipedia.org/wiki/CSS)
 [![JavaScript](https://img.shields.io/badge/Vanilla_JS-F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Three.js](https://img.shields.io/badge/Three.js-r128-000000.svg?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org)
 
-[✨ Öne Çıkanlar](#-öne-çıkanlar) · [🚀 Çalıştırma](#-çalıştırma) · [🛠️ Teknik](#️-teknik-özellikler) · [🔒 Güvenlik](#-güvenlik) · [📋 Yayın Öncesi](#-yayın-öncesi-yapılacaklar)
+[🚀 Canlı Siteyi Aç](https://yusuftunga1.github.io/modulo-voltcube-pro/) · [✨ Öne Çıkanlar](#-öne-çıkanlar) · [💻 Çalıştırma](#-çalıştırma) · [🛠️ Teknik](#️-teknik-özellikler) · [🔒 Güvenlik](#-güvenlik) · [📋 Yayın Öncesi](#-yayın-öncesi-yapılacaklar)
 
 </div>
 
@@ -78,6 +79,8 @@ Ardından `http://localhost:4173` adresini açın.
 ---
 
 ## 📋 Yayın Öncesi Yapılacaklar
+
+> Site GitHub Pages ile herkese açık yayında. Aşağıdaki maddeler gerçek satışa başlamadan önce tamamlanmalı.
 
 - [ ] `siparis@modulo.example` ve `merhaba@modulo.example` yer tutucu e-postalarını gerçekleriyle değiştirin.
 - [ ] Gerçek ödeme yok: "Siparişi tamamla" yalnızca e-posta taslağı açıyor. Ödeme altyapısı (ör. iyzico, Stripe) bağlanmalı.
