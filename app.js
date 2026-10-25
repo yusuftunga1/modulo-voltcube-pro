@@ -97,6 +97,7 @@ function cartCalc() {
   const sub = cart.reduce((s, i) => s + PRODUCTS[i.id].price * i.qty, 0);
   return { sub, total: sub, count: cart.reduce((s, i) => s + i.qty, 0) };
 }
+let orderText = '';
 function renderCart() {
   const c = cartCalc();
   $('#cartCount').textContent = c.count;
@@ -112,12 +113,13 @@ function renderCart() {
   $('#cTotal').textContent = fmt(c.total);
   const lines = cart.map(i => `${i.qty} × ${PRODUCTS[i.id].name} — ${fmt(PRODUCTS[i.id].price * i.qty)}`);
   lines.push('', 'Toplam: ' + fmt(c.total), '', 'Teslimat adresi:');
+  orderText = 'MODULO siparişi\n\n' + lines.join('\n');
   $('#checkout').href = 'mailto:siparis@modulo.example?subject=' + encodeURIComponent('MODULO siparişi') + '&body=' + encodeURIComponent(lines.join('\n'));
   saveCart();
 }
 function addToCart(id, qty = 1) {
   const it = cart.find(i => i.id === id);
-  if (it) it.qty += qty; else cart.push({ id, qty });
+  if (it) it.qty = Math.min(99, it.qty + qty); else cart.push({ id, qty: Math.min(99, qty) });
   renderCart();
   const b = $('#cartCount'); b.classList.add('bump'); setTimeout(() => b.classList.remove('bump'), 350);
 }
@@ -146,6 +148,15 @@ cartList.addEventListener('click', e => {
   } else if (r) { cart = cart.filter(i => i.id !== r.dataset.rm); renderCart(); }
 });
 $('#checkout').addEventListener('click', e => { if (!cart.length) e.preventDefault(); });
+$('#copyOrder').addEventListener('click', async () => {
+  if (!cart.length) return;
+  try { await navigator.clipboard.writeText(orderText); }
+  catch (e) {
+    const ta = document.createElement('textarea'); ta.value = orderText; ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch (e2) {} ta.remove();
+  }
+  toast('Sipariş özeti kopyalandı');
+});
 
 /* ───────── UI: feature strips + buy ───────── */
 const strips = $$('.strip');
@@ -239,6 +250,8 @@ function fitAll() {
 
 /* ───────── WebGL stage: the MODULO VoltCube Pro, built from the product photos ───────── */
 const stage = (() => {
+  try { return build(); } catch (err) { console.error(err); root.classList.add('no-webgl'); return { render() {}, setView() {} }; }
+  function build() {
   const noop = { setView() {}, render() {} };
   const fail = () => { root.classList.add('no-webgl'); return noop; };
   if (!window.THREE) return fail();
@@ -247,6 +260,8 @@ const stage = (() => {
   try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' }); }
   catch (e) { return fail(); }
   const lowPower = (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4;
+  let lost = false;
+  canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); lost = true; canvas.style.display = 'none'; root.classList.add('no-webgl'); });
   renderer.setPixelRatio(Math.min(devicePixelRatio, lowPower ? 1.25 : 1.75));
   renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
   renderer.outputEncoding = THREE.sRGBEncoding;
@@ -325,7 +340,7 @@ const stage = (() => {
     c.fillStyle = '#3a3c42'; for (let y = 96; y < 410; y += 13) for (let x = 140 + ((y / 13) % 2) * 6; x < 380; x += 13) { c.beginPath(); c.arc(x, y, 2.7, 0, 7); c.fill(); }
     rr(c, 96, 480, 320, 480, 70); c.fillStyle = '#0c0d0f'; c.fill();
     rr(c, 106, 490, 300, 460, 62); c.save(); c.clip();
-    const cg = c.createConicGradient(0, 256, 720);
+    const cg = c.createConicGradient ? c.createConicGradient(0, 256, 720) : c.createLinearGradient(96, 480, 416, 960);
     for (let i = 0; i <= 24; i++) cg.addColorStop(i / 24, i % 2 ? '#8e9198' : '#2b2d31');
     c.fillStyle = cg; c.fillRect(96, 480, 320, 480); c.restore();
   });
@@ -432,9 +447,11 @@ const stage = (() => {
     dispAcc += dt; wAcc += dt;
     if (wAcc > 2.2) { wAcc = 0; wTgt = [100, 96.5, 65, 45.2, 87.5, 30, 100][Math.floor(Math.random() * 7)]; }
     if (dispAcc > .12 && Math.abs(wTgt - watts) > .05) { dispAcc = 0; watts += (wTgt - watts) * .35; disp.redraw(); }
+    if (lost) return;
     if (pivot.visible) renderer.render(scene, camera); else renderer.clear();
   }
   return { render, setView(f) { view = VIEWS[f] || VIEWS.gan; } };
+  }
 })();
 
 /* ───────── main loop ───────── */

@@ -31,7 +31,11 @@ Dosyaları bir sunucuya kopyalamak siteyi yayına almak için yeterli.
 | `index.html` | Sayfa yapısı ve metinler |
 | `style.css` | Tasarım, ürün renkleri, duyarlı düzen |
 | `app.js` | 3B sahne, kaydırma animasyonu, sepet, menü, galeri |
-| `assets/` | Ürün fotoğrafları ve kırpmaları |
+| `assets/` | Ürün fotoğrafları, kırpmaları ve paylaşım görseli (`og.jpg`) |
+| `fonts/` | Barlow Condensed ve Inter (SIL OFL), kendi sunucumuzdan |
+| `vendor/` | Three.js r128 (SRI özetiyle doğrulanır) |
+| `scripts/check.mjs` | Yayın öncesi otomatik doğrulama |
+| `404.html`, `robots.txt`, `sitemap.xml` | Hata sayfası ve arama motoru dosyaları |
 
 ---
 
@@ -53,7 +57,13 @@ Dosyaları bir sunucuya kopyalamak siteyi yayına almak için yeterli.
 python3 -m http.server 4173
 ```
 
-Ardından `http://localhost:4173` adresini açın.
+Ardından `http://localhost:4173` adresini açın. Yayın öncesi doğrulama için:
+
+```bash
+node scripts/check.mjs
+```
+
+Betik yerel dosya bağlantılarını, three.js SRI özetini, CSP'yi, `app.js` söz dizimini ve temel sayfa kurallarını kontrol eder; kalan yayın öncesi maddeleri uyarı olarak listeler.
 
 ---
 
@@ -64,17 +74,27 @@ Ardından `http://localhost:4173` adresini açın.
 | **Diller** | HTML, CSS, JavaScript (Vanilla / Çerçevesiz) |
 | **3B** | Three.js r128 (WebGL) |
 | **Derleme (Build)** | Yok (Doğrudan çalışır) |
-| **Yazı Tipleri** | *Barlow Condensed*, *Inter* |
+| **Yazı Tipleri** | *Barlow Condensed*, *Inter* (kendi sunucumuzdan, latin + latin-ext) |
+| **Dış Bağımlılık** | Yok (Three.js ve yazı tipleri depoda) |
 | **Düşük Güç Modu** | Zayıf cihazlarda çizim çözünürlüğü otomatik düşer |
 
 ---
 
 ## 🔒 Güvenlik
 
-- Three.js, **Subresource Integrity (SRI)** özetiyle yükleniyor; dosya değişirse tarayıcı çalıştırmıyor.
-- `Content-Security-Policy` ile yalnızca cdnjs betikleri ve Google Fonts'a izin veriliyor.
+- Three.js depodaki kopyadan, **Subresource Integrity (SRI)** özetiyle yükleniyor; dosya değişirse tarayıcı çalıştırmıyor.
+- `Content-Security-Policy` yalnızca kendi kaynağına izin veriyor; satır içi tek betik özetiyle (hash) izinli. Üçüncü taraf sunucuya istek gitmiyor.
 - `referrer` bilgisi gönderilmiyor.
 - Depoda API anahtarı, jeton ya da kişisel veri yok. Sepet yalnızca ziyaretçinin tarayıcısında (`localStorage`) tutuluyor; "Siparişi tamamla" sunucuya veri göndermiyor, yalnızca ziyaretçinin e-posta uygulamasını açıyor.
+
+---
+
+## 🧪 Güvenilirlik
+
+- 3B sahne çökerse, WebGL yoksa ya da bağlam kaybolursa sayfanın geri kalanı (sepet, menü, galeri) çalışmaya devam eder; model yerine gerçek ürün fotoğrafı gösterilir.
+- Sepet `localStorage` kullanılamasa da çalışır. Siparişte e-posta uygulaması açılmazsa "Sipariş özetini kopyala" düğmesi vardır.
+- Eski tarayıcılar için `vh` yedekleri ve konik gradyan yedeği vardır.
+- Arama motorları ve paylaşım için canonical, Open Graph, Twitter kartı, `Product` şeması, `robots.txt` ve `sitemap.xml` hazırdır.
 
 ---
 
@@ -86,7 +106,7 @@ Ardından `http://localhost:4173` adresini açın.
 - [ ] Gerçek ödeme yok: "Siparişi tamamla" yalnızca e-posta taslağı açıyor. Ödeme altyapısı (ör. iyzico, Stripe) bağlanmalı.
 - [ ] Kargo, iade ve garanti koşulları sitede yok; kesinleşince eklenmeli.
 - [ ] Galerideki arka yüz için "güç girişi" ifadesini ürün bilgisiyle doğrulayın.
-- [ ] Yazı tipleri Google Fonts'tan, three.js cdnjs'ten yükleniyor. Yayında gizlilik (KVKK) metninde belirtin ya da dosyaları kendi sunucunuza alın.
+- [ ] Sepet tarayıcıda (`localStorage`) tutuluyor, çerez ve üçüncü taraf istek yok. Yine de gerçek satış için gizlilik ve mesafeli satış metinleri eklenmeli.
 - [ ] `assets/` içindeki ürün fotoğraflarının kullanım hakkının size ait olduğundan emin olun.
 
 ---

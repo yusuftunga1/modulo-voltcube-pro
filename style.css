@@ -92,10 +92,10 @@ main,section{position:relative}
 
 /* anchors (where the 3D object lives) */
 .anchor{aspect-ratio:1;pointer-events:none}
-.no-webgl .anchor{border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff,#9fb4de 30%,#1a2748 70%,#04060d);box-shadow:0 0 120px rgba(80,120,255,.35)}
+.no-webgl .anchor:not([data-hide]){border-radius:28px;background:#d2d2d4 url("assets/view-front.jpg") center/contain no-repeat}
 
 /* hero */
-.hero{height:100svh;min-height:640px;overflow:hidden}
+.hero{height:100vh;height:100svh;min-height:640px;overflow:hidden}
 .hero-anchor{position:absolute;left:50%;top:50%;width:min(37vw,62vh);transform:translate(-50%,-52%)}
 .hero-title{position:absolute;inset:0;z-index:1;pointer-events:none}
 .hero-title .w{position:absolute;top:48%;font:800 min(15.5vw,38vh)/.8 var(--disp);text-transform:uppercase;letter-spacing:-.01em;
@@ -333,12 +333,12 @@ body.cart-open .scrim{opacity:1;pointer-events:auto}
 
 /* ───── gallery: pinned horizontal scroll of the real product photos ───── */
 .gal{position:relative;height:var(--galh,260vh)}
-.gal-pin{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,4vh,52px);padding-top:70px}
+.gal-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,4vh,52px);padding-top:70px}
 .gal-head{padding:0 var(--m);display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
 .gal-head .lead{margin:0;max-width:28ch}
 .gal-hide{top:18svh}
 .gal-track{display:flex;gap:clamp(14px,1.6vw,28px);padding:0 var(--m);width:max-content;will-change:transform}
-.shot{position:relative;flex:none;width:min(27vw,calc((100svh - 330px) * .72));min-width:230px;border-radius:26px;overflow:hidden;background:#d2d2d4}
+.shot{position:relative;flex:none;width:27vw;width:min(27vw,calc((100svh - 330px) * .72));min-width:230px;border-radius:26px;overflow:hidden;background:#d2d2d4}
 .shot:nth-child(even){margin-top:clamp(0px,5vh,48px)}
 .shot img{display:block;width:100%;height:auto;aspect-ratio:680/940;object-fit:cover;transform:translate3d(var(--ix,0px),0,0) scale(1.1)}
 .shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 20px 18px;background:linear-gradient(transparent,rgba(8,9,11,.82));color:#fff}
@@ -360,3 +360,5 @@ body.cart-open .scrim{opacity:1;pointer-events:auto}
 /* erişilebilirlik: içeriğe atla */
 .skip{position:fixed;left:12px;top:-60px;z-index:400;background:#fff;color:#08090b;padding:10px 16px;font-weight:600;border-radius:999px;transition:top .2s}
 .skip:focus{top:12px}
+
+#copyOrder{margin-top:10px}
